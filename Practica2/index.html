@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 2 navigator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <div class="conteiner-fluid">
+        <div class="row m-5">
+            <div class="col-12 text-center">
+                <button onclick="obtieneDatos()" class="btn btn-primary">Obtiene datos del navegador</button>
+                <ul class="m-5" id="navegador">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var navergador = document.getElementById("navegador");
+        var datos = navergador.getElementsByTagName("li");
+
+        function obtieneDatos(){
+            datos[0].innerHTML = "El nombre del navegador es" + navigator.appCodeName
+            datos[1].innerHTML = "Version" + navigator.appVersion
+            datos[2].innerHTML = "Esta en linea" + navigator.onLine
+            datos[3].innerHTML = "Plataformas" + navigator.platform
+        }
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
