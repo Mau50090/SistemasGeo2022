@@ -1,16 +1,40 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica 1</title>
+    <title>Index de actividades</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/43958ea3fc.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Actividades</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#practicauno">Practica 1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#practicados">Practica 2</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+    <div>
+     <a name="practicauno"></a>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <div class="container-fluid" data-aos="fade-right">
           <a class="navbar-brand" href="#">
@@ -108,7 +132,26 @@
         </div>
 
     </div>
+ </div>
 
+<div>  
+    <a name="practicados"></a>
+    <div class="conteiner-fluid">
+        <div class="row m-5">
+            <div class="col-12 text-center">
+                <button onclick="obtieneDatos()" class="btn btn-primary">Obtiene datos del navegador</button>
+                <ul class="m-5" id="navegador">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>  
+
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMrQgga-C5zCuZLTVk2MPVzX7naqKZXZU&callback=iniciaMapa" async defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -138,6 +181,17 @@
             });
         }
 
+        var navergador = document.getElementById("navegador");
+        var datos = navergador.getElementsByTagName("li");
+
+        function obtieneDatos(){
+            datos[0].innerHTML = "El nombre del navegador es" + navigator.appCodeName
+            datos[1].innerHTML = "Version" + navigator.appVersion
+            datos[2].innerHTML = "Esta en linea" + navigator.onLine
+            datos[3].innerHTML = "Plataformas" + navigator.platform
+        }
+
     </script>
+
 </body>
 </html>
