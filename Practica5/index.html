@@ -15,6 +15,7 @@
         <img id="imagenmapa" src="" alt="Imagen de mapa">
     </div>
 
+    <p id="alerta"></p>
     <script>
         var mapa = document.getElementById("mapa")
 
@@ -23,6 +24,10 @@
             if(navigator.geolocation){
 
                 navigator.geolocation.getCurrentPosition(muestraPosicion);
+            }else{
+                var alerta = document.getElementById("alerta"
+                )
+                alerta.innerHTML = "El navegador no dispone de geolocalizacion"
             }
         }
 
