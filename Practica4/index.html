@@ -4,31 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica 3</title>
+    <title>Practica 4</title>
 </head>
 <body>
     
-    <p>haz click para obtener las coordenadas</p>
+    <button onclick="obtieneUbicacion">Obtener ubicacion.</button>
 
-    <button onclick="getLocation()">Obtener Coordenadas</button>
+    <div id="mapa">
 
-    <p id="mapa"> </p>
+        <img id="imagenmapa" src="" alt="Imagen de mapa">
+    </div>
 
+    <p id="alerta"></p>
     <script>
         var mapa = document.getElementById("mapa")
 
-        function getLocation(){
+        function obtieneUbicacion(){
 
             if(navigator.geolocation){
 
                 navigator.geolocation.getCurrentPosition(muestraPosicion);
+            }else{
+                var alerta = document.getElementById("alerta"
+                )
+                alerta.innerHTML = "El navegador no dispone de geolocalizacion"
             }
         }
 
         function muestraPosicion(posicion){
 
-            mapa.innerHTML = "Latitud: " + posicion.coords.latitude + "<br>" + " Longitud: " + posicion.coords.longitude
+            var coordenadas = posicion.coords.latitude + ", " + posicion.coords.longitude
 
+            var imagenmapa = document.getElementById("imagenmapa")
+
+            imagenmapa.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + coordenadas + "&zoom=18&size=800x800&key=AIzaSyCMrQgga-C5zCuZLTVk2MPVzX7naqKZXZU"
         }
 
     </script>

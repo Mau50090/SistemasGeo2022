@@ -9,19 +9,35 @@
 
 </head>
 
-    <script>
-        var navergador = document.getElementById("navegador");
-        var datos = navergador.getElementsByTagName("li");
-
-        function obtieneDatos(){
-            datos[0].innerHTML = "El nombre del navegador es" + navigator.appCodeName
-            datos[1].innerHTML = "Version" + navigator.appVersion
-            datos[2].innerHTML = "Esta en linea" + navigator.onLine
-            datos[3].innerHTML = "Plataformas" + navigator.platform
-        }
-
-
-    </script>
+<body>
+    <body>
+        <div class="container-fluid">
+            <div class="row m-5">
+                <div class="col-12">
+                    <button onclick="obtieneDatos()" class="text-center btn btn-primary">Obtiene datos del navegador</button>
+                    <ul class="m-5" id="navegador">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            var navegador = document.getElementById("navegador")
+    
+            var datos = navegador.getElementsByTagName("li")
+    
+            function obtieneDatos() {
+                datos[0].innerHTML = "El nombre del navegador es: " + navigator.appCodeName
+                datos[1].innerHTML = "La version del navegador es: " + navigator.appVersion
+                datos[2].innerHTML = "El estatus del internet es: " + navigator.onLine
+                datos[3].innerHTML = "Plataforma: " + navigator.platform
+            }
+        </script>
+        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

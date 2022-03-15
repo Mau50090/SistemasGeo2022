@@ -4,42 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica 4</title>
+    <title>Practica 6</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   
+
+    <style>
+        body{
+            background-color: #efefef;
+        }
+
+        #map{
+            width: 100%;
+            height: 500px;
+        }
+    </style>
 </head>
 <body>
     
-    <button onclick="obtieneUbicacion">Obtener ubicacion.</button>
-
-    <div id="mapa">
-
-        <img id="imagenmapa" src="" alt="Imagen de mapa">
+    <div class="container-fluid">
+        <div class="conteiner">
+            <div class="col-12 p-5">
+                <div class="col-12 p-5">
+                    <h1>Mapa con infoWindow</h1>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <p id="alerta"></p>
     <script>
-        var mapa = document.getElementById("mapa")
 
-        function obtieneUbicacion(){
+        var informacion = "<h1>Informacion DeLaSalle BAjio</h1>"
+
+            informacion += "<p><strong>Direccion: Av Universidad 602, Lomas del Campestre</p>"
+
+        function iniciaMapa(){
+
+            var propiedades = {
+                center: {
+                    lat: 21.152162,
+                    lng: -101.711022
+                },
+                zoom: 14
+            }
+
+            const mapa = document.getElementById("map")
+
+            const map = new google.maps.Map(mapa, propiedades);
 
             if(navigator.geolocation){
 
-                navigator.geolocation.getCurrentPosition(muestraPosicion);
-            }else{
-                var alerta = document.getElementById("alerta"
-                )
-                alerta.innerHTML = "El navegador no dispone de geolocalizacion"
+                navigator.geolocation.getCurrentPosition( position =>{
+
+                    let posicion = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                }
+
+                let propiedadesMarcador = {
+                    position: posicion,
+                    map,
+                    title: "Marcador"
+                }
+
+                const marcador = new google.maps.Marker(propiedadesMarcador);
+
+                map.setCenter(posicion);
+
+                const infoWindow = new google.maps.InfoWindow({
+                    content: informacion
+                })
+
+                marcador.addListener("click", ()=>{
+                    infoWindow.open(map,marcador)
+                })
+                });
             }
         }
 
-        function muestraPosicion(posicion){
-
-            var coordenadas = posicion.coords.latitude + ", " + posicion.coords.longitude
-
-            var imagenmapa = document.getElementById("imagenmapa")
-
-            imagenmapa.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + coordenadas + "&zoom=18&size=800x800&key=AIzaSyCMrQgga-C5zCuZLTVk2MPVzX7naqKZXZU"
-        }
-
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMrQgga-C5zCuZLTVk2MPVzX7naqKZXZU&callback=iniciaMapa"asyncdefer></script>
 </body>
 </html>
